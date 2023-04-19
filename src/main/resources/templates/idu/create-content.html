@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>게시글 등록</h1>
+
+<form th:action="@{/idu/test}" th:method="post">
+    <div>
+        <label for="title">제목</label>
+        <input type="text" id="title" name="title" placeholder="제목 입력">
+
+    </div>
+    <div>
+        <label for="author">작성자</label>
+        <input type="text" id="author" name="author" placeholder="작성자 입력">
+    </div>
+    <div>
+        <label for="content">내용</label>
+        <input type="text" id="content" name="content" placeholder="내용 입력">
+    </div>
+    <a th:href="@{/}" role="button">취소</a>
+    <button type="submit">등록</button>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Author</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="post : ${model}">
+        <td th:text="${post.get(0).getTitle()}"></td>
+        <td th:text="${post.get(0).getContent()}"></td>
+        <td th:text="${post.get(0).getAuthor()}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

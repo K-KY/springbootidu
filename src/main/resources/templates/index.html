@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>INDEX</title>
+</head>
+<body>
+<h1>스프링 부트</h1>
+index.html
+
+<div>
+    <a href="idu/posts/save">게시글 리스트</a>
+    <a th:href="@{/posts/save}">게시글 리스트</a>
+</div>
+<h2 th:text="${model?.getContent()}"></h2>
+
+<tr th:each="post : ${model}">
+    <td th:text="${post.title}"></td>
+    <td th:text="${post.content}"></td>
+    <td th:text="${post.author}"></td>
+</tr>
+
+</body>
+</html>

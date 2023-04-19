@@ -17,9 +17,12 @@ public class PostsService {
     }
 
     @Transactional
-    public Long save(PostsSaveRequestDto requestDto){
+    public Long save(PostsSaveRequestDto requestDto) {
         return postsRepository.save(requestDto.toEntity()).getId();
     }
+    //@Transactional
+    // 메소드를 실행하면서 오류가 있다면 실행 전으로 되돌리는 기능
+    // 오류가 없으면 데이터 베이스에 반영
 
     @Transactional
     public Long update(Long id, PostsUpdateRequestDto requestDto) {
@@ -31,8 +34,8 @@ public class PostsService {
 
     }
 
-    public PostsResponseDto findById(Long id){
-        Posts entity = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id = "+id));
+    public PostsResponseDto findById(Long id) {
+        Posts entity = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id = " + id));
         return new PostsResponseDto(entity);
     }
 }

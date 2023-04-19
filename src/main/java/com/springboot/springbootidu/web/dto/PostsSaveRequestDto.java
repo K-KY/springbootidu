@@ -1,12 +1,11 @@
 package com.springboot.springbootidu.web.dto;
 
 import com.springboot.springbootidu.domain.posts.Posts;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
 @NoArgsConstructor
+@ToString
 public class PostsSaveRequestDto {
     private String title;
     private String content;

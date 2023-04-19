@@ -1,5 +1,6 @@
 package com.springboot.springbootidu.domain.posts;
 
+import com.springboot.springbootidu.domain.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter//6
 @NoArgsConstructor//5
 @Entity//1
-public class Posts {
+public class Posts extends BaseEntity {
     @Id//2
     @GeneratedValue(strategy = GenerationType.IDENTITY)//3
     private Long id;
