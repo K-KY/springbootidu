@@ -1,17 +1,21 @@
 package com.springboot.springbootidu.web;
 
-import com.springboot.springbootidu.domain.posts.Posts;
 import com.springboot.springbootidu.domain.posts.PostsRepository;
+import com.springboot.springbootidu.service.posts.PostsService;
 import com.springboot.springbootidu.web.dto.PostsSaveRequestDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/idu")
 public class IndexController {
-    @Autowired
-    private PostsRepository postsRepository;
+    private final PostsRepository postsRepository;
+    private final PostsService postsService;
+
+    public IndexController(PostsRepository postsRepository, PostsService postsService) {
+        this.postsRepository = postsRepository;
+        this.postsService = postsService;
+    }
 
     @PostMapping("/test")
     public String test(@RequestParam String title, @RequestParam String content, @RequestParam String author){
@@ -19,12 +23,18 @@ public class IndexController {
         System.out.println("title = " + title);
         System.out.println("content = " + content);
         System.out.println("author = " + author);
-        Posts savePosts = postsRepository.save(Posts.builder()
-                .title(title)
+/*
+        PostsSaveRequestDto dto = PostsSaveRequestDto.builder() .title(title)
                 .content(content)
                 .author(author)
-                .build());
-        postsRepository.save(savePosts);
+                .build();
+*/
+//        Posts savePosts = postsRepository.save(Posts.builder()
+//                .title(title)
+//                .content(content)
+//                .author(author)
+//                .build());
+//        postsRepository.save(savePosts);
         return "redirect:/";
     }
 
@@ -34,8 +44,10 @@ public class IndexController {
 
         return "idu/create-content";
     }
+
     @GetMapping("/")
-    public void index(){
-        System.out.println("postsRepository = " + postsRepository);;
+    public String  index(Model model){
+        model.addAttribute("posts",postsService.findAllDesc());
+        return "index";
     }
 }

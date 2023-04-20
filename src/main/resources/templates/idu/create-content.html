@@ -7,7 +7,7 @@
 <body>
 <h1>게시글 등록</h1>
 
-<form th:action="@{/idu/test}" th:method="post">
+<form th:action="@{/test}" th:method="post">
     <div>
         <label for="title">제목</label>
         <input type="text" id="title" name="title" placeholder="제목 입력">
@@ -22,25 +22,15 @@
         <input type="text" id="content" name="content" placeholder="내용 입력">
     </div>
     <a th:href="@{/}" role="button">취소</a>
-    <button type="submit">등록</button>
 </form>
+<button type="button" id="btn-save">등록</button>
 
-<table>
-    <thead>
-    <tr>
-        <th>Title</th>
-        <th>Content</th>
-        <th>Author</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="post : ${model}">
-        <td th:text="${post.get(0).getTitle()}"></td>
-        <td th:text="${post.get(0).getContent()}"></td>
-        <td th:text="${post.get(0).getAuthor()}"></td>
-    </tr>
-    </tbody>
-</table>
 
 </body>
+
+<th:block th:replace="~{/layout/footer::setFooter(~{this::footer})}">
+    <th:block th:fragment="footer"></th:block>
+    footer
+</th:block>
+
 </html>

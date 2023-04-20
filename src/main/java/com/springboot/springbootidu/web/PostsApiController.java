@@ -20,6 +20,7 @@ public class PostsApiController {
     public Long save(
             @RequestBody
             PostsSaveRequestDto requestDto) {
+        System.out.println("requestDto = " + requestDto);
         return postsService.save(requestDto);
     }
 
