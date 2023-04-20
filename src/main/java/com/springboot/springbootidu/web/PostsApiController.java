@@ -17,12 +17,12 @@ public class PostsApiController {
 
 
     @PostMapping("/api/v1/posts")
-    public Long save(
-            @RequestBody
+    public Long save(@RequestBody
             PostsSaveRequestDto requestDto) {
         System.out.println("requestDto = " + requestDto);
         return postsService.save(requestDto);
     }
+    //RequestBody 는 붙이면 자동으로 json 데이터를 자바 객체로 변환해주는 마술?
 
     @PutMapping("/api/v1/posts/{id}")
     public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {

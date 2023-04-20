@@ -13,12 +13,14 @@ public class PostsSaveRequestDto {
 
     @Builder
     public PostsSaveRequestDto(String title, String content, String author) {
+        System.out.println("PostsSaveRequestDto Builder");
         this.title = title;
         this.content = content;
         this.author = author;
     }
 
     public Posts toEntity() {
+        System.out.println("postsSaveRequestDto: ToENTITY");
         return Posts.builder()
                 .title(title)
                 .content(content)

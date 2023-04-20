@@ -37,6 +37,8 @@ var main = {
         }).done(function() {
             alert('글이 등록되었습니다.');
             window.location.href = '/';
+            // 글이 등록된 후, 메인 페이지로 이동합니다.
+            alert(JSON.stringify(data))
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
