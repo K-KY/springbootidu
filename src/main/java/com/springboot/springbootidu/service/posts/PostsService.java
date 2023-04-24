@@ -47,5 +47,11 @@ public class PostsService {
     @Transactional(readOnly = true)
     public List<PostsListResponseDto> findAllDesc(){
         return postsRepository.findAll().stream().map(PostsListResponseDto::new).collect(Collectors.toList());
+        /*
+        PostsListResponseDto::new 이건 posts -> new PostsListResponseDto(posts)
+        stream 은 데이터 처리 메소드
+        * map 에선 반환 타입을 지정
+        * collect 에선 List<PostsListResponseDo> 로 반환
+        * */
     }
 }

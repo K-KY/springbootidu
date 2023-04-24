@@ -23,7 +23,17 @@ index.html
 </tr>
 </thead>
 <tbody>
+<!--posts 라는 이름으로 담겨있는 model 데이터를 post 로 정의
+    그리고 th:each 를 통해 posts 의 데이터를 순회
+-->
 <tr th:each="post : ${posts}">
+    <td>
+        <a th:href="@{/posts/update/{id}(id=${post.id})}">
+            수정
+        </a>
+
+    </td>
+
     <td th:text="${post.id}"></td>
     <td th:text="${post.title}"></td>
     <td th:text="${post.author}"></td>

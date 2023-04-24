@@ -1,3 +1,4 @@
+//여기는 처음부터 다시한번 읽어보고 싶어
 var main = {
     init : function () {
         var _this = this;
