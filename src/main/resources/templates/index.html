@@ -29,6 +29,7 @@ index.html
 <tr th:each="post : ${posts}">
     <td>
         <a th:href="@{/posts/update/{id}(id=${post.id})}">
+<!--{id}(id=${post.id}) 로 한 이유 (id=${post.id})로 하면 url 이 /posts/update/?{id} 가 됨-->
             수정
         </a>
 
