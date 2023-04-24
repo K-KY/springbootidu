@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PostsUpdate</title>
+</head>
+<body>
+  <h2>게시글 수정</h2>
+<div>
+  <label>글 번호</label>
+  <input type="text" id="id" th:value="${post.id}" readonly>
+</div>
+  <div>
+      <form>
+          <div>
+              <label for="title">제목</label>
+              <input id="title" type="text" th:value="${post.title}">
+          </div>
+          <div>
+              <label for="author">작성자</label>
+              <input id="author" type="text" th:value="${post.author}" readonly>
+          </div>
+          <div>
+              <label for="content">내용</label>
+              <input id="content" type="text" th:value="${post.content}">
+          </div>
+      </form>
+  </div>
+<a href="/" role="button">취소</a>
+<button type="button" id="btn-update">수정</button>
+</body>
+
+<th:block th:replace="~{/layout/footer::setFooter(~{this::footer})}">
+  <th:block th:fragment="footer" th:value="${post.id}"></th:block>
+</th:block>
+
+</html>
