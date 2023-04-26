@@ -9,7 +9,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
 @RequiredArgsConstructor
-@Configuration
+@Configuration// 수정
 public class SecurityConfig {
 
     private final CustomOAuth2UserService customOAuth2UserService;
