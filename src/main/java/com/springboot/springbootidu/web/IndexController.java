@@ -1,9 +1,11 @@
 package com.springboot.springbootidu.web;
 
+import com.springboot.springbootidu.config.auth.dto.SessionUser;
 import com.springboot.springbootidu.domain.posts.PostsRepository;
 import com.springboot.springbootidu.service.posts.PostsService;
 import com.springboot.springbootidu.web.dto.PostsResponseDto;
 import com.springboot.springbootidu.web.dto.PostsSaveRequestDto;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +13,12 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class IndexController {
     private final PostsRepository postsRepository;
+    private final HttpSession httpSession;
     private final PostsService postsService;
 
-    public IndexController(PostsRepository postsRepository, PostsService postsService) {
+    public IndexController(PostsRepository postsRepository, HttpSession httpSession, PostsService postsService) {
         this.postsRepository = postsRepository;
+        this.httpSession = httpSession;
         this.postsService = postsService;
     }
 
@@ -39,7 +43,7 @@ public class IndexController {
         return "redirect:/";
     }
 
-    @RequestMapping(value="/posts/save", method = RequestMethod.GET)
+    @GetMapping("/posts/save")
     public String hellopage(PostsSaveRequestDto dto) {
         System.out.println("dto---------------------------"+dto);
 
@@ -50,6 +54,12 @@ public class IndexController {
     public String  index(Model model){
 
         model.addAttribute("posts",postsService.findAllDesc());
+
+        SessionUser user = (SessionUser)httpSession.getAttribute("user");
+        if(user !=null){
+            System.out.println("user.getName=" + user.getName());
+            model.addAttribute("username",user.getName());
+        }
 //        postsRepository.findAll();
 //        이렇게 해도 동작 하는데 새로운 메소드를 만들어서 데이터를 받아온 이유가 뭘까{
 //        데이터를 가져오는 코드가 컨트롤러와 뷰 사이에 직접 존재하게 되면 유지보수가 어렵게 되고 코드가 복잡해진다.}

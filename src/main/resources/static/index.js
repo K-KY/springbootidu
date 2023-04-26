@@ -41,7 +41,7 @@ var main = {
             // 글이 등록된 후, 메인 페이지로 이동합니다.
             alert(JSON.stringify(data))
         }).fail(function (error) {
-            alert(JSON.stringify(error));
+            console.log(JSON.stringify(error));
         });
     },
     update : function () {
