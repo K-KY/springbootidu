@@ -1,5 +1,6 @@
 package com.springboot.springbootidu.web;
 
+import com.springboot.springbootidu.config.auth.LoginUser;
 import com.springboot.springbootidu.config.auth.dto.SessionUser;
 import com.springboot.springbootidu.domain.posts.PostsRepository;
 import com.springboot.springbootidu.service.posts.PostsService;
@@ -51,14 +52,14 @@ public class IndexController {
     }
 
     @GetMapping("/")
-    public String  index(Model model){
+    public String index(Model model, @LoginUser SessionUser user) {
+        //@LoginUser SessionUser user
 
-        model.addAttribute("posts",postsService.findAllDesc());
+        model.addAttribute("posts", postsService.findAllDesc());
 
-        SessionUser user = (SessionUser)httpSession.getAttribute("user");
         if(user !=null){
             System.out.println("user.getName=" + user.getName());
-            model.addAttribute("username",user.getName());
+            model.addAttribute("userName", user.getName());
         }
 //        postsRepository.findAll();
 //        이렇게 해도 동작 하는데 새로운 메소드를 만들어서 데이터를 받아온 이유가 뭘까{
@@ -74,3 +75,9 @@ public class IndexController {
     }
 
 }
+
+/**
+ * @LoginUser SessionUser user
+ * 기존에 (user)httpSession.getAttribute("user") 로 가져오던 세션 정보갑이 개선되었다
+ * 이제는 어느 컨트롤러든 @LoginUser 만사용하면 세션 정보를 가져 올 수 있다
+ */
