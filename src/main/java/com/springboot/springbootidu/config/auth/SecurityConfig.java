@@ -21,7 +21,13 @@ public class SecurityConfig {
         http.authorizeHttpRequests()
                 .requestMatchers("/user/**").authenticated()
                 .anyRequest().permitAll()
-                .and().formLogin().loginPage("/login");
+                .and()
+                .logout()
+                .logoutSuccessUrl("/")
+                .and()
+                .oauth2Login()
+                .userInfoEndpoint()
+                .userService(customOAuth2UserService);
 
         return http.build();
 
