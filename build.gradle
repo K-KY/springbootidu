@@ -42,4 +42,7 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+		// 스택 트레이스 출력을 위해 --stacktrace 옵션 추가
+		systemProperty 'test.debug', 'true'
+
 }

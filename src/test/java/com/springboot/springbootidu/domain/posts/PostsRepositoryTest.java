@@ -1,7 +1,7 @@
 package com.springboot.springbootidu.domain.posts;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import java.util.List;
 public class PostsRepositoryTest {
     @Autowired
     PostsRepository postsRepository;
-    @AfterAll//1
+    @AfterEach//1
     public void cleanUp(){
         postsRepository.deleteAll();
     }
@@ -46,7 +46,7 @@ public class PostsRepositoryTest {
         LocalDateTime now = LocalDateTime.of(1,1,1,1,1,1);
         System.out.println("now = " + now);
         postsRepository.save(Posts.builder()
-                .title("title")
+                .title("테스트 게시글")
                 .content("content")
                 .author("author").build());
         //when

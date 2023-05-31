@@ -5,10 +5,7 @@ import com.springboot.springbootidu.domain.posts.Posts;
 import com.springboot.springbootidu.domain.posts.PostsRepository;
 import com.springboot.springbootidu.web.dto.PostsSaveRequestDto;
 import com.springboot.springbootidu.web.dto.PostsUpdateRequestDto;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -49,7 +46,7 @@ public class PostsApiControllerTests {
     public void setup(){
         mvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
     }
-    @AfterAll
+    @AfterEach
     public void tearDown() throws Exception {
         postsRepository.deleteAll();
     }
@@ -60,26 +57,24 @@ public class PostsApiControllerTests {
         //given
         String title = "title";
         String content = "content";
-        PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder().
-                title(title)
+        PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
+                .title(title)
                 .content(content)
                 .author("author")
                 .build();
 
-        String url = "http://localhost:"+port + "/api/v1/posts";
+        String url = "http://localhost:" + port + "/api/v1/posts";
         //when
 //        ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url,requestDto,Long.class);
-        mvc.perform(
-                post(url)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(new ObjectMapper().writeValueAsString(requestDto))
-        ).andExpect(status().isOk());
+        mvc.perform(post(url)
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .content(new ObjectMapper().writeValueAsString(requestDto)))
+                .andExpect(status().isOk());
         //then
 //        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
 //        assertThat(responseEntity.getBody()).isGreaterThan(0L);
 
         List<Posts> all = postsRepository.findAll();
-
         assertThat(all.get(0).getTitle()).isEqualTo(title);
         assertThat(all.get(0).getContent()).isEqualTo(content);
     }
@@ -107,18 +102,15 @@ public class PostsApiControllerTests {
         //when
 //        ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT,requestEntity,Long.class);
 
-        mvc.perform(
-                put(url)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(new ObjectMapper().writeValueAsString(requestDto))
-        ).andExpect(status().isOk());
-
+        mvc.perform(put(url)
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .content(new ObjectMapper().writeValueAsString(requestDto)))
+                .andExpect(status().isOk());
         //then
 //        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
 //        assertThat(responseEntity.getBody()).isGreaterThan(0L);
 
         List<Posts> all = postsRepository.findAll();
-
         assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
         assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
     }

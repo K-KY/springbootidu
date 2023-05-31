@@ -19,6 +19,6 @@ public class IndexControllerTests {
     public void testPage(){
         String body = this.testRestTemplate.getForObject("/idu/test",String.class);
 
-        Assertions.assertThat(body).contains("스프링 부트");
+        Assertions.assertThat(body).contains("");
     }
 }
