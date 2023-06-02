@@ -49,8 +49,9 @@ index.html
 </table>
 </body>
 
-<div th:replace="~{/layout/footer :: setFooter(~{this::footer})}">
-    <div th:fragment="footer">footer</div>
-</div>
+<th:block th:replace="~{/layout/footer::setFooter(~{this::footer})}">
+    <th:block th:fragment="footer"></th:block>
+    footer
+</th:block>
 
 </html>
