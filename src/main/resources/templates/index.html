@@ -49,7 +49,7 @@ index.html
 </table>
 </body>
 
-<th:block th:replace="layout/footer :: setFooter(~{this::footer})">
+<th:block th:replace="~{layout/footer :: setFooter(~{this::footer})}">
     <th:block th:fragment="footer"></th:block>
 </th:block>
 
