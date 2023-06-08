@@ -31,7 +31,7 @@
 <button type="button" id="btn-delete">삭제</button>
 </body>
 
-<th:block th:replace="~{/layout/footer::setFooter(~{this::footer})}">
+<th:block th:replace="~{layout/footer::setFooter(~{this::footer})}">
   <th:block th:fragment="footer" th:value="${post.id}"></th:block>
 </th:block>
 
