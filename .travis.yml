@@ -33,7 +33,7 @@ deploy:
     key: springbootidu.zip #빌드파일을 압축해서 전달
     bundle_type: zip # 압축 확장자
     application: springbootidu # 웹 콘솔에서 등록한 CodeDeploy 앱
-    deployment_group: sprongbootidu-group # 웹 콘솔에서 등록한 CodeDeploy 배포그룹
+    deployment_group: springbootidu-group # 웹 콘솔에서 등록한 CodeDeploy 배포그룹
 
     region: ap-northeast-2
     wait-until-deployed: true
