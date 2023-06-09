@@ -21,7 +21,7 @@ else
 fi
 
 echo "> Deploy new application"
-JAR_NAME=$(sudo ls -tr $REPOSITORY/*.jar | tail -n 1)
+JAR_NAME=$(sudo ls -tr $REPOSITORY/ | grep jar | grep -v "plain" | tail -n 1)
 echo "> JAR Name: $JAR_NAME"
 
 echo "> $JAR_NAME 에 실행권한 추가"
