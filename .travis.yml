@@ -8,7 +8,7 @@ branches:
 before_install:
   - chmod +x gradlew
 before_deploy:
-  - zip -r springbootidu
+  - zip -r springbootidu *
   - mkdir -p deploy
   - mv springbootidu.zip deploy/springbootidu.zip
 
