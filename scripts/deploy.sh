@@ -1,9 +1,9 @@
 #!/bin/bash
-REPOSITORY=/root/app/step1
+REPOSITORY=/root/app/step2
 PROJECT_NAME=springbootidu
 
 echo "> Build 파일 복사"
-sudo chmod +rwx /root/app/step1/
+sudo chmod +rwx /root/app/step2/
 sudo cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> 현재 구동중인 어플리케이션 pid 확인"
