@@ -32,7 +32,6 @@ deploy:
     skip_cleanup: true
     acl: private # zip 파일 접근을 private
     local_dir: deploy # before_deploy 에서 생성한 디렉토리
-    wait_until_deployed: true
 
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY #Travis repo setting 설정값
@@ -45,7 +44,6 @@ deploy:
     deployment_group: springbootidu-group # 웹 콘솔에서 등록한 CodeDeploy 배포그룹
 
     region: ap-northeast-2
-    wait_until_deployed: true
 #Travis CI 서버의 Home
 cache:
   directories:
