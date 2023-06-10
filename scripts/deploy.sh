@@ -1,6 +1,9 @@
 #!/bin/bash
 REPOSITORY=/home/ec2-user/app/step2
 PROJECT_NAME=springbootidu
+echo "> Git Pull"
+git stash
+git pull
 
 echo "> Build 파일 복사"
 sudo cp $REPOSITORY/zip/*.jar $REPOSITORY/
