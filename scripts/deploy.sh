@@ -30,7 +30,7 @@ sudo chmod +x $JAR_NAME
 echo "> $JAR_NAME 실행"
 
 sudo chown ec2-user /home/ec2-user/app/step2/nohup.out
-sudo chmod +w /home/ec2-user/app/step2/*
+sudo chmod +x $REPOSITORY/zip/springbootidu-0.0.1-SNAPSHOT.jar
 
 sudo nohup java -jar -Dspring.config.location=classpath:/application.properties,classpath:/application-real.properties,/home/ec2-user/app/application-oauth.properties,/home/ec2-user/app/application-real-db.properties -Dspring.profiles.active=real $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
 
