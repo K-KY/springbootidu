@@ -1,9 +1,9 @@
 #!/bin/bash
-REPOSITORY=/root/app/step2
+REPOSITORY=/home/ec2-user/app/step2
 PROJECT_NAME=springbootidu
 
 echo "> Build 파일 복사"
-sudo chmod +rwx /root/app/step2/
+sudo chmod +rwx /home/ec2-user/app/step2
 sudo cp $REPOSITORY/zip/*.jar $REPOSITORY/
 
 echo "> 현재 구동중인 어플리케이션 pid 확인"
@@ -31,7 +31,7 @@ echo "> $JAR_NAME 실행"
 
 sudo chmod +rwx $REPOSITORY/nohup.out
 
-nohup java -jar -Dspring.config.location=classpath:/application.properties,/root/app/application-oauth.properties,/root/app/application-real-db.properties,/root/app/step1/springbootidu/src/main/resources/application-real.properties -Dspring.profiles.active=real $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
+nohup java -jar -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app/application-oauth.properties,/home/ec2-user/app/application-real-db.properties,/home/ec2-user/app/step1/springbootidu/src/main/resources/application-real.properties -Dspring.profiles.active=real $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
 
 
 

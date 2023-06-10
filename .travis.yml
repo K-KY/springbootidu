@@ -45,7 +45,7 @@ deploy:
     deployment_group: springbootidu-group # 웹 콘솔에서 등록한 CodeDeploy 배포그룹
 
     region: ap-northeast-2
-    wait-until-deployed: true
+    wait_until_deployed: true
 #Travis CI 서버의 Home
 cache:
   directories:
