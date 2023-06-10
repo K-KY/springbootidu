@@ -25,7 +25,7 @@ JAR_NAME=$( sudo ls -tr $REPOSITORY/ | grep jar | grep -v "plain" | tail -n 1)
 echo "> JAR Name: $JAR_NAME"
 
 echo "> $JAR_NAME 에 실행권한 추가"
-sudo chmod +x $JAR_NAME
+sudo chmod +x $REPOSITORY/$JAR_NAME
 
 echo "> $JAR_NAME 실행"
 
@@ -35,6 +35,7 @@ sudo chmod +x $REPOSITORY/zip/springbootidu-0.0.1-SNAPSHOT.jar
 sudo nohup java -jar -Dspring.config.location=classpath:/application.properties,classpath:/application-real.properties,/home/ec2-user/app/application-oauth.properties,/home/ec2-user/app/application-real-db.properties -Dspring.profiles.active=real $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
 
 
+echo "> 끝"
 
 #nohup java -jar -Dspring.config.location=classpath:/application.properties,/root/app/application-oauth.properties,/root/app/application-real-db.properties,/root/app/step1/springbootidu/src/main/resources/application-real.properties -Dspring.profiles.active=real  $REPOSITORY/$JAR_NAME 2>&1 &
 
