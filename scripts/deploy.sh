@@ -36,17 +36,3 @@ sudo nohup java -jar \
 -Dspring.config.location=classpath:/application.properties,classpath:/application-real.properties,/home/ec2-user/app/application-oauth.properties,/home/ec2-user/app/application-real-db.properties \
  -Dspring.profiles.active=real $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
 
-#nohup java -jar -Dspring.config.location=classpath:/application.properties,/root/app/application-oauth.properties,/root/app/application-real-db.properties,/root/app/step1/springbootidu/src/main/resources/application-real.properties -Dspring.profiles.active=real  $REPOSITORY/$JAR_NAME 2>&1 &
-
-
-
-#nohup java -jar $REPOSITORY/$JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
-
-#nohup java -jar \ -Dspring.config.location=classpath:/application.properties,/root/app/application-oauth.properties \$REPOSITORY/$JAR_NAME 2>&1 &
-#nohup java -jar \ -Dspring.config.location=classpath:/application-real.properties,/root/app/application-real-db.properties -Dspring.profile.active=real \$REPOSITORY/$JAR_NAME 2>&1 &
-
-
-#nohup java -jar $REPOSITORY/$JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
-
-
-#nohup java -jar -  Dspring.config.location=classpath:/application.properties,/root/app/application-oauth.properties $REPOSITORY/$JAR_NAME 2>&1 &
