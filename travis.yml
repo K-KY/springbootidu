@@ -1,7 +1,6 @@
 language: java
 jdk:
   - openjdk17
-
 branches:
   only:
     - main
@@ -10,10 +9,9 @@ cache:
   directories:
     - '$HOME/.m2/repository'
     - '$HOME/.gradle'
-
 script: "./gradlew clean build"
 
-notification:
+notifications:
   email:
     recipients:
-      -kyuyoungk@naver.com
+      - kyuyoungk@naver.com
