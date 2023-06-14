@@ -3,7 +3,7 @@ jdk:
   - openjdk17
 branches:
   only:
-    - main
+    - master
 
 cache:
   directories:
