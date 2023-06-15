@@ -2,13 +2,21 @@ language: java
 jdk:
   - openjdk17
 
-on:
-  branches: main
+branches:
+  only:
+    - main
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.gradle'
+script: "./gradlew clean build"
 
 before_deploy:
   - zip -r springbootidu *
   - mkdir -p deploy
   - mv springbootidu.zip deploy/springbootidu.zip
+
 
 deploy:
   - provider: s3
@@ -21,11 +29,6 @@ deploy:
     local_dir: deploy
 before_install:
   - chmod +x gradlew
-cache:
-  directories:
-    - '$HOME/.m2/repository'
-    - '$HOME/.gradle'
-script: "./gradlew clean build"
 
 notifications:
   email:
