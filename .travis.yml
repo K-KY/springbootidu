@@ -1,9 +1,9 @@
 language: java
 jdk:
   - openjdk17
-branches:
-  only:
-    - main
+
+on:
+  branches: main
 
 before_deploy:
   - zip -r springbootidu *
