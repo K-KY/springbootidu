@@ -31,13 +31,15 @@ deploy:
     local_dir: deploy
 
   - provider: codedeploy
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: $AWS_SECRET_KEY
-    bucket: springbootidu-build
-    key: springbootidu.zip
-    bundle_type: zip
-    application: springbootidu
-    deployment_group: springbootidu-group
+    access_key_id: $AWS_ACCESS_KEY #Travis repo setting 설정값
+    secret_access_key: $AWS_SECRET_KEY # Travis repo setting 설정값
+
+    bucket: springbootidu-build # s3 버킷
+    key: springbootidu.zip #빌드파일을 압축해서 전달
+    bundle_type: zip # 압축 확장자
+    application: springbootidu # 웹 콘솔에서 등록한 CodeDeploy 앱
+    deployment_group: springbootidu-group # 웹 콘솔에서 등록한 CodeDeploy 배포그룹
+
     region: ap-northeast-2
 
 before_install:
