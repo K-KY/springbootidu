@@ -2,6 +2,7 @@
 
 REPOSITORY=/home/ec2-user/app/step2
 PROJECT_NAME=springbootidu
+
 echo "> 파일 복사"
 cp $REPOSITORY/zip/*.jar $REPOSITORY/ # $REPOSITORY/zip 의 확장자가 jar 인 파일을 모두 $REPOSITORY 로 복사
 
@@ -33,5 +34,11 @@ echo "> $JAR_NAME 에 실행권한 추가"
 chmod +x $JAR_NAME
 echo "> $JAR_NAME  실행"
 
-nohup java -jar -Dspring.config.location=classpath:/application.properties, classpath:/application-real.properties, /home/ec2-user/app/application-oauth.properties, /home/ec2-user/app/application-real-db.properties -Dspring.profiles.active=real $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
+nohup java -jar \
+      -Dspring.config.location=classpath:/application.properties,\
+      /home/ec2-user/app/step1/springbootidu/src/main/resources/application-real.properties,\
+      /home/ec2-user/app/application-oauth.properties,\
+      /home/ec2-user/app/application-real-db.properties\
+      -Dspring.profiles.active=real \
+      $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
 
