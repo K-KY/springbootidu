@@ -13,9 +13,14 @@ cache:
 script: "./gradlew clean build"
 
 before_deploy:
-  - zip -r springbootidu *
-  - mkdir -p deploy
-  - mv springbootidu.zip deploy/springbootidu.zip
+  - mkdir -p before-deploy # deploy 디렉토리를 생성 , -p: 중복되는 디렉토리가 없도록
+  - cp script/*.sh before-deploy/ # script 디렉토리의 모든 .sh 파일을 before-deploy 디렉토리로 복사
+  - cp appspec.yml before-deploy/ # appspec.yml 파일을 before-deploy 디렉토리로 복사
+  - cp build/libs/*.jar before-deploy/ # build/libs 디렉토리의 모든 .jar 파일을 before-deploy 디렉토리로 복사
+  - cd before-deploy && zip -r before-deploy * # before-deploy 폴더로 이동 한뒤 폴더 내 모든 파일을 before-deploy.zip 파일로 압축
+  - cd ../ && mkdir -p deploy # 한 단계 상위 디렉토리로 돌아간 후 deploy 디렉토리를 생성 존재한다면 생성하지 않는다
+  - mv before-deploy/before-deploy.zip deploy/springbootidu.zip
+  # before-deploy.zip 파일을 deploy 폴더로 이동하고 파일 명을 springbootidu.zip 으로 변경한다
 
 
 deploy:
