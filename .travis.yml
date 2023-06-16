@@ -22,7 +22,7 @@ deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
-    bucket: springbootidu-build
+    bucket: springbootidu-build # s3 버킷
     region: ap-northeast-2
     on:
       branch: main
@@ -31,8 +31,8 @@ deploy:
     local_dir: deploy
 
   - provider: codedeploy
-    access_key_id: $AWS_ACCESS_KEY #Travis repo setting 설정값
-    secret_access_key: $AWS_SECRET_KEY # Travis repo setting 설정값
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
 
     bucket: springbootidu-build # s3 버킷
     key: springbootidu.zip #빌드파일을 압축해서 전달
@@ -41,6 +41,8 @@ deploy:
     deployment_group: springbootidu-group # 웹 콘솔에서 등록한 CodeDeploy 배포그룹
 
     region: ap-northeast-2
+    on:
+      branch: main
 
 before_install:
   - chmod +x gradlew
