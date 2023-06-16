@@ -38,7 +38,7 @@ nohup java -jar \
       -Dspring.config.location=classpath:/application.properties,\
       /home/ec2-user/app/application-oauth.properties,\
       /home/ec2-user/app/application-real-db.properties,\
-      /home/ec2-user/app/step1/springbootidu/src/main/resources/application-real.properties\
-      -Dspring.profiles.active=real \
+      classpath:/application-real.properties\
+      "-Dspring.profiles.active=real" \
       $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
 
