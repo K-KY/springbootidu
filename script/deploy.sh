@@ -34,6 +34,8 @@ echo "> $JAR_NAME 에 실행권한 추가"
 chmod +x $JAR_NAME
 echo "> $JAR_NAME  실행"
 
+
+#jar name 붙여서 해결
 nohup java -jar $JAR_NAME \
       -Dspring.config.location=classpath:/application.properties,\
       /home/ec2-user/app/application-oauth.properties,\
