@@ -1,8 +1,9 @@
 #!/bin/bash
-
+#cd /opt/codedeploy-agent/deployment-root/deployment-logs/ codedeploy 실행 로그 확인
+#nohup.out 도 확인할 것
 REPOSITORY=/home/ec2-user/app/step2
 PROJECT_NAME=springbootidu
-
+rm -f $REPOSITORY/nohup.out
 echo "> 파일 복사"
 cp $REPOSITORY/zip/*.jar $REPOSITORY/ # $REPOSITORY/zip 의 확장자가 jar 인 파일을 모두 $REPOSITORY 로 복사
 
