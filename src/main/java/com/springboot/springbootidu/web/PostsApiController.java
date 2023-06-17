@@ -19,7 +19,7 @@ public class PostsApiController {
     @PostMapping("/api/v1/posts")
     public Long save(@RequestBody
             PostsSaveRequestDto requestDto) {
-        System.out.println("데이터 저장~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("데이터 저장~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("requestDto = " + requestDto);
         return postsService.save(requestDto);
     }
