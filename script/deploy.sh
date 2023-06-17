@@ -9,7 +9,7 @@ cp $REPOSITORY/zip/*.jar $REPOSITORY/ # $REPOSITORY/zip 의 확장자가 jar 인
 
 echo "> 현재 구동 중인 애플리케이션 pid 확인"
 
-CURRENT_PID=$(pgrep -fl springbootidu | grep jar | grep -v "plain" | awk '{print $1}')
+CURRENT_PID=$(pgrep -fl springbootidu | awk '{print $1}')
 # pgrep :: springbootidu  라는 이름을 가진 프로세스를 검색
 # grep jar :: 위에서 검색한 프로세스 중에서 jar 문자열을 포함하는 프로세스만 필터링
 # grep -v "plain" :: plain 문자열을 포함하지 않는 문자열만 남기고 나머지 제외
