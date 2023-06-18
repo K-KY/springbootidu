@@ -1,14 +1,44 @@
 # springbootidu
 
-https://github.com/jojoldu/freelec-springboot2-webservice/issues/806#issue-1299987948 나중에 이거 해보기
+[githubAction](https://github.com/jojoldu/freelec-springboot2-webservice/issues/806#issue-1299987948) 나중에 이거 해보기
 
+# 범인??
+***
+nohup java -jar \
+-Dspring.config.location=/home/ec2-user/app/step1/springbootidu/src/main/resources/application.properties,\
+/home/ec2-user/app/application-oauth.properties,\
+/home/ec2-user/app/application-real-db.properties,\
+/home/ec2-user/app/step1/springbootidu/src/main/resources/application-real.properties\
+-Dspring.profiles.active=real \
+$JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
+***
+책에서는 이렇게 알려줬음
 
+그러나?
+* Error: Unable to access jarfile /home/ec2-user/app/application-oauth.properties,
+이런 에러가 발생
+* 위에서 부터 아래로 진행하기 때문에 맨위에있는 문제점인 application-oauth 밖에 안나온거지 
+싹다 문제임
+* nohup java -jar $JAR_NAME \
+  -Dspring.config.location=/home/ec2-user/app/step1/springbootidu/src/main/resources/application.properties,\
+  /home/ec2-user/app/application-oauth.properties,\
+  /home/ec2-user/app/application-real-db.properties,\
+  /home/ec2-user/app/step1/springbootidu/src/main/resources/application-real.properties\
+  -Dspring.profiles.active=real \
+  $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
+그래서 $JAR_NAME 을 앞에 넣어서 실행시켰더니 배포 성공
+# 나는 이게 정상적으로 되고 있는줄 알았음
++ 그런데? 구글 로그인이 안되는것
++ 알고보니 이게 위에서부터 다 찾은다음 $JAR_NAME 으로 실행하는건데 내가 처음부터 실행하게 해놔서 밑에 에러는 안보고 지나간거임
++ 다 지우고 배포하면 똑같이 됨
++ 그러니까 이렇게 해놓으면 될리가 없음
 # 유력 용의자  >> 왜 구글 로그인이 안되는가?
 travis-ci 에서 배포 했을때 생성되는 hibernate 문법이 mariadb 문법과 맞지 않아서
 users 테이블과 post 테이블을 생성 못하고 있는중
+***
 + mysql 문법으로 생성하게 만들었음
 + 
-## post,users 테이블이 없으면 로그인이 안되는가?
+### post,users 테이블이 없으면 로그인이 안되는가?
 직접 삭제해서 증명해 봄
 ***
 * 증명 완료
