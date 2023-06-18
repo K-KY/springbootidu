@@ -38,8 +38,12 @@ $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
 #### 그냥 ec2 real-db 들어가서 spring.jpa.hibernate.ddl-auto=none 로 돼있는거 update 로 바꿈
 * 일단 이거 때문이니까 테이블이 생성은 됐음
 # 유력 용의자  >> 왜 구글 로그인이 안되는가?
-travis-ci 에서 배포 했을때 생성되는 hibernate 문법이 mariadb 문법과 맞지 않아서
-users 테이블과 post 테이블을 생성 못하고 있는중
+- ★ travis-ci 에서 배포 했을때 생성되는 hibernate 문법이 mariadb 문법과 맞지 않아서
+users 테이블과 post 테이블을 생성 못하고 있는중 ★
+#### 이게 아니었음
+## user 가 예약어라서 발생한 문제
+자동생성하는 테이블을 users 로 바꿔서 해결
+
 ***
 + mysql 문법으로 생성하게 만들었음
 + 
