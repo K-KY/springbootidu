@@ -19,7 +19,7 @@ if [ -z "$CURRENT_PID" ]; then
     echo "> 현재 구동 중인 애플리캐이션이 없음"
 else
     echo "> kill -15 $CURRENT_PID"
-    kill -15 $CURRENT_PID
+    sudo kill -15 $CURRENT_PID
     sleep 5
 fi
 
