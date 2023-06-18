@@ -38,7 +38,8 @@ echo "> $JAR_NAME  실행"
 
 #jar name 붙여서 해결
 nohup java -jar \
-      -Dspring.config.location=/home/ec2-user/app/step1/springbootidu/src/main/resources/application.properties,\
-      /home/ec2-user/app/step1/springbootidu/src/main/resources/application-real.properties\
+      -Dspring.config.location=classpath:/application.properties,\
+      classpath:/application-real.properties\
       -Dspring.profiles.active=real \
       $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
+
