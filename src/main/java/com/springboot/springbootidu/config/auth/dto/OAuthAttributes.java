@@ -1,7 +1,7 @@
 package com.springboot.springbootidu.config.auth.dto;
 
 import com.springboot.springbootidu.domain.user.Role;
-import com.springboot.springbootidu.domain.user.User;
+import com.springboot.springbootidu.domain.user.Users;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -55,8 +55,8 @@ public class OAuthAttributes {
                 .nameAttributeKey(userNameAttributeName)
                 .build();
     }
-    public User toEntity(){
-        return User.builder()
+    public Users toEntity(){
+        return Users.builder()
                 .name(name)
                 .email(email)
                 .picture(picture)
