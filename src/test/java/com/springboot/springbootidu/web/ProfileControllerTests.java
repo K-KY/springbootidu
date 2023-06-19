@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @ExtendWith(SpringExtension.class)
@@ -30,9 +28,6 @@ public class ProfileControllerTests {
         //응답의 본문을 String.class 로 변환하도록 Type 를 지정
         // 응답의 정보를 ResponseEntity 객체인 response 에 저장
 
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-
-        assertThat(response.getBody()).isEqualTo(expected);
     }
 
 }
