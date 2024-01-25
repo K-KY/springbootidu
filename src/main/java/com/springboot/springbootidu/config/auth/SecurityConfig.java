@@ -13,7 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final CustomOAuth2UserService customOAuth2UserService;
-
+//아래 방식 deprecated
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
